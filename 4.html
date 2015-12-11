@@ -19,7 +19,8 @@
 <script>
 var myObj = {
 	nClickCount : 0,
-	addClickNumber : function() {
+	addClickNumber : function(evt) {
+        debugger;
 		this.nClickCount++;
 	},
 	getNumberName : function() {
@@ -29,21 +30,11 @@ var myObj = {
 	validNumber : function(data) {
 		if(typeof data === "number" && data > 0) return true;
 		else return false;
-	},
-    sendAjax : function(sAjaxURL) {
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", (function(e) {
-            var htData = JSON.parse(oReq.responseText);
-            if(htData.userId) this.addClickNumber();
-        }).bind(this));
-        oReq.open("GET", sAjaxURL);
-        oReq.send();
-    },
+	}
 }
 
 var elSecondLI = document.querySelector("li:nth-child(2)");
-var sAjaxURL = "http://jsonplaceholder.typicode.com/posts/2";
-elSecondLI.addEventListener("click", myObj.sendAjax.bind(myObj, sAjaxURL), false);
+elSecondLI.addEventListener("click", myObj.addClickNumber, false);
 
  </script>
         
