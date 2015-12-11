@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>1.html</title>
+        <link rel="stylesheet" href="debugging.css">
+    </head>
+    <body>
+    	<section>
+    		<ul>
+    			<li>1</li>
+    			<li>나를눌러봐</li>
+    			<li>3</li>
+    			<li>4</li>
+    		</ul>
+    	</section>
+
+<script>
+var myObj = {
+	nClickCount : 0,
+	addClickNumber : function() {
+		this.nClickCount++;
+	},
+	getNumberName : function() {
+		if(this.validNumber(this.nClickCount)) return this.nClickCount;
+		else return "not changed";
+	},
+	validNumber : function(data) {
+		if(typeof data === "number" && data > 0) return true;
+		else return false;
+	},
+    sendAjax : function(sAjaxURL) {
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", (function(e) {
+            var htData = JSON.parse(oReq.responseText);
+            if(htData.userId) this.addClickNumber();
+        }).bind(this));
+        oReq.open("GET", sAjaxURL);
+        oReq.send();
+    },
+}
+
+var elSecondLI = document.querySelector("li:nth-child(2)");
+var sAjaxURL = "http://jsonplaceholder.typicode.com/posts/2";
+elSecondLI.addEventListener("click", myObj.sendAjax.bind(myObj, sAjaxURL), false);
+
+ </script>
+        
+    </body>
+</html>

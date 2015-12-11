@@ -1,0 +1,19 @@
+section { margin : 50px;}
+section ul {
+width: 450px;
+margin: 0px auto;
+}
+section ul li {
+list-style: none;
+width :100px;
+height: 100px;
+outline : 1px solid gray;
+line-height: 100px;
+text-align: center;
+margin-right: 5px;
+float: left;
+}
+
+section ul li:nth-child(2) {
+cursor: pointer;
+}
