@@ -36,5 +36,6 @@ let sAjaxURL = "http://jsonplaceholder.typicode.com/posts/2";
 let oMyObj = new myObj();
 elSecondLI.addEventListener("click", oMyObj.sendAjax.bind(oMyObj,sAjaxURL), false);
 
-
-//oMyobj.count 로 결과 확인
+var elButton = document.querySelector(".log button");
+var elBoard = document.querySelector(".board");
+elButton.addEventListener("click", evt => {elBoard.innerText = oMyObj.count}, false);

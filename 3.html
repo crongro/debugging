@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>1.html</title>
-        <link rel="stylesheet" href="debugging.css">
+        <link rel="stylesheet" href="css/debugging.css">
     </head>
     <body>
     	<section>
@@ -16,36 +16,11 @@
     		</ul>
     	</section>
 
-<script>
-var myObj = {
-	nClickCount : 0,
-	addClickNumber : function() {
-		this.nClickCount++;
-	},
-	getNumberName : function() {
-		if(this.validNumber(this.nClickCount)) return this.nClickCount;
-		else return "not changed";
-	},
-	validNumber : function(data) {
-		if(typeof data === "number" && data > 0) return true;
-		else return false;
-	},
-    sendAjax : function(sAjaxURL) {
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", function(e) {
-            var htData = JSON.parse(oReq.responseText);
-            if(htData.userId) this.addClickNumber();
-        });
-        oReq.open("GET", sAjaxURL);
-        oReq.send();
-    },
-}
+       <div class="log">
+            <button>몇번 눌렀게?</button>
+            <div class="board"></div>
+        </div>
 
-var elSecondLI = document.querySelector("li:nth-child(2)");
-var sAjaxURL = "http://jsonplaceholder.typicode.com/posts/2";
-elSecondLI.addEventListener("click", myObj.sendAjax.bind(myObj, sAjaxURL), false);
-
- </script>
-        
+    <script src="js/3_es5.js"></script>
     </body>
 </html>

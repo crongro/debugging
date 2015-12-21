@@ -4,17 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>1.html</title>
-        <link rel="stylesheet" href="debugging.css">
+        <link rel="stylesheet" href="css/debugging.css">
     </head>
     <body>
     	<section>
     		<ul>
     			<li>1</li>
-    			<li>2</li>
+    			<li>나를눌러봐</li>
     			<li>3</li>
     			<li>4</li>
     		</ul>
     	</section>
+
+        <div class="log">
+            <button>몇번 눌렀게?</button>
+            <div class="board"></div>
+        </div>
 
 <script>
 var myObj = {
@@ -22,7 +27,7 @@ var myObj = {
 	addClickNumber : function() {
 		this.nClickCount++;
 	},
-	getNumberName : function() {
+	getClickCount : function() {
 		if(this.validNumber(this.nClickCount)) return this.nClickCount;
 		else return "not changed";
 	},
@@ -32,7 +37,16 @@ var myObj = {
 	}
 }
 
-</script>
+var elSecondLI = document.querySelector("li:nth-child(2)");
+elSecondLI.addEventListener("click", myObj.addClickNumber, false);
+
+var elButton = document.querySelector(".log button");
+var elBoard = document.querySelector(".board");
+elButton.addEventListener("click", function(evt) {
+    elBoard.innerText = myObj.getClickCount();
+}, false);
+
+ </script>
         
     </body>
 </html>

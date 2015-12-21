@@ -50,6 +50,10 @@ var sAjaxURL = "http://jsonplaceholder.typicode.com/posts/2";
 var oMyObj = new myObj();
 elSecondLI.addEventListener("click", oMyObj.sendAjax.bind(oMyObj, sAjaxURL), false);
 
-//oMyobj.count 로 결과 확인
+var elButton = document.querySelector(".log button");
+var elBoard = document.querySelector(".board");
+elButton.addEventListener("click", function (evt) {
+    elBoard.innerText = oMyObj.count;
+}, false);
 
-//# sourceMappingURL=6_es5.js.map
+//# sourceMappingURL=3_es5.js.map
